@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { createUserWithEmailAndPassword } from '@firebase/auth'
 import { firebaseAuth } from '../../config/firebaseConfig'
 import { useState, useEffect } from 'react';
@@ -9,9 +10,7 @@ import {
     TouchableOpacity,
     KeyboardAvoidingView,
 } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'
 import styles from './styles'
-import { Platform } from 'react-native';
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
@@ -23,14 +22,13 @@ export default function Login({ navigation }) {
     const registerFirebase = () => {
         createUserWithEmailAndPassword(firebaseAuth, email, password)
         .then(() => {
-            var user = userCredential.user;
+            const user = userCredential.user;
             // navigation.navigate('createUser', { idUser: user.uid })
         })
         .catch((error) => {
             setErrorLogin(true)
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ..
+            const errorCode = error.code;
+            const errorMessage = error.message;
         });
     }
 

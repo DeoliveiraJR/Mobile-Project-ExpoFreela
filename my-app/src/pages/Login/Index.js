@@ -108,11 +108,3 @@ export default function Login({ navigation }) {
         </KeyboardAvoidingView>
   );
 }
-
-
-const getUsers = async (users) => {
-    // recupera a collection do firebase:
-    const data = await getDocs(usersCollectionRef)
-    console.log(data)
-}
-getUsers()

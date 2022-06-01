@@ -15,7 +15,7 @@ const firebaseConfig = {
   appId: "1:241327384419:web:34ee1e7e3dfc6375b39556"
 };
 
-// Initialize Firebase
+// Initialize FirNebase
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app)
@@ -24,15 +24,14 @@ export const firebaseAuth = getAuth(app)
 // const [users, setUsers] = useState([]);
 //  const usersCollectionRef = collection(db,"users");
   
-  // useEffect(() => {
-     const getUsers = async (users) => {
-      // recupera a collection do firebase:
-      const data = await getDocs(usersCollectionRef)
-      console.log(data)
-      // adiciona ao state:
-      // setUsers(data.docs.map((doc) => ({
-        // ...doc.data(), id: doc.id
-      // })));
-    // }
-    getUsers(users)
-  }//, // [])
+// useEffect(() => {
+// const getUsers = async (users) => {
+// recupera a collection do firebase:
+// const data = await getDocs(usersCollectionRef)
+// console.log(data)
+// adiciona ao state:
+// setUsers(data.docs.map((doc) => ({
+// ...doc.data(), id: doc.id
+// })));
+// }
+// }, [])
