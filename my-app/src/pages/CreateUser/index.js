@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createUserWithEmailAndPassword } from '@firebase/auth'
-import { firebaseAuth } from '../../config/firebaseConfig'
+import { firebaseAuth } from '../../Helpers/firebaseConfig'
 import { useState, useEffect } from 'react';
 import {
     Text, 
@@ -12,21 +12,23 @@ import {
 } from 'react-native';
 import styles from './styles'
 
-export default function Login({ navigation }) {
+export default function CreateUser({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
-    const [errorLogin, setErrorLogin] = useState("");
+    // const [errorLogin, setErrorLogin] = useState('')
 
     const registerFirebase = () => {
         createUserWithEmailAndPassword(firebaseAuth, email, password)
-        .then(() => {
+        .then((userCredential) => {
             const user = userCredential.user;
-            // navigation.navigate('createUser', { idUser: user.uid })
+            const { uid } = user
+            // history.push('home')
+            navigation.navigate('home', { uid })
         })
         .catch((error) => {
-            setErrorLogin(true)
+            // setErrorLogin(true)
             const errorCode = error.code;
             const errorMessage = error.message;
         });

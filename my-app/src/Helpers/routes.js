@@ -5,8 +5,27 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigation() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="login" component={Login} />
-      <Tab.Screen name="createUser" component={CreateUser} />
+      <Tab.Screen
+        name="home"
+        component={CollectData}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="history"
+        component={History}
+        options={{
+          headerShown: false,
+        }}  
+      /> 
+      <Tab.Screen
+        name="profile"
+        component={Profile}
+        options={{
+          headerShown: false,
+        }}  
+      />  
     </Tab.Navigator>
   );
 }
