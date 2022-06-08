@@ -6,11 +6,9 @@ import { collection, query, where, doc, setDoc, getDocs } from "firebase/firesto
 import { useState, useEffect } from 'react';
 
 export default function Profile() {
-  
 
 const getDocsFirebase = async (q) => {
   const querySnapshot = await getDocs(q);
-  // console.log(querySnapshot);
   querySnapshot.forEach((doc) => {
     const dataQuery = doc.data();
     console.log(dataQuery);
@@ -23,29 +21,7 @@ useEffect(() => {
   const docRef = collection(db, "Users");
   const q = query(docRef, where("email", "==", user));
   const data = getDocsFirebase(q);
-  /* const data = async () => {
-    const querySnapshot = await getDocs(q);
-    console.log(querySnapshot);
-    querySnapshot.forEach((doc) => {
-    const dataQuery = doc.data();
-    // toDo.id = doc.id;
-    // return dataQuery;
-  })
-  } */
-  // console.log(data);
 }, [])
-
-/*
-useEffect(() => {
-  const getUsers = async (users) => {
-  const data = await getDocs(usersCollectionRef)
-  console.log(data)
-  setUsers(data.docs.map((doc) => ({
-  ...doc.data(), id: doc.id
-  })));
-  }
-}, [])
-*/
   
 return (
  <View style={styles.mainContainer}>

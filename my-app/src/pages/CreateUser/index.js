@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createUserWithEmailAndPassword } from '@firebase/auth'
 import { firebaseAuth, db } from '../../Helpers/firebaseConfig'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
     Text, 
     View,
@@ -12,11 +12,6 @@ import {
 } from 'react-native';
 import styles from './styles'
 import { collection, doc, setDoc } from "firebase/firestore";
-
-// Add a new document with a generated id
-
-// later...
-// console.log(db);
 
 export default function CreateUser({ navigation }) {
     const [email, setEmail] = useState("");
@@ -51,10 +46,6 @@ export default function CreateUser({ navigation }) {
             const errorMessage = error.message;
         });
     }
-
-    /* useEffect(() => {
-
-    }, []) */
 
     return (
         <KeyboardAvoidingView
