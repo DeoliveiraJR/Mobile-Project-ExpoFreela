@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createUserWithEmailAndPassword } from '@firebase/auth'
-import { firebaseAuth } from '../../Helpers/firebaseConfig'
+import { firebaseAuth, db } from '../../Helpers/firebaseConfig'
 import { useState, useEffect } from 'react';
 import {
     Text, 
@@ -11,21 +11,39 @@ import {
     KeyboardAvoidingView,
 } from 'react-native';
 import styles from './styles'
+import { collection, doc, setDoc } from "firebase/firestore";
+
+// Add a new document with a generated id
+
+// later...
+// console.log(db);
 
 export default function CreateUser({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
-    // const [errorLogin, setErrorLogin] = useState('')
+    
+    
+    const addFirestore = async () => {
+        const data = {
+            email,
+            password,
+            name,
+            age,
+            link: '',
+        }
+
+        const newDocRef = doc(collection(db, "Users"));
+        await setDoc(newDocRef, data);
+    }
 
     const registerFirebase = () => {
         createUserWithEmailAndPassword(firebaseAuth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            const { uid } = user
-            // history.push('home')
-            navigation.navigate('home', { uid })
+            addFirestore();
+            navigation.navigate('home')
         })
         .catch((error) => {
             // setErrorLogin(true)
@@ -34,9 +52,9 @@ export default function CreateUser({ navigation }) {
         });
     }
 
-    useEffect(() => {
+    /* useEffect(() => {
 
-    }, [])
+    }, []) */
 
     return (
         <KeyboardAvoidingView
