@@ -79,7 +79,62 @@ const styles = StyleSheet.create({
       marginTop:'auto',
       color: '#ffff',
       justifyContent: 'center',
-    } 
+    },
+    checkboxContainer: {
+      flexDirection: "row",
+      marginBottom: 20,
+      marginTop: 20,
+    },
+    checkbox: {
+      alignSelf: "center",
+    },
+    label: {
+      margin: 8,
+      color:'#ffff',
+    },
+    centeredView: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 22
+    },
+    modalView: {
+      margin: 20,
+      backgroundColor: "white",
+      borderRadius: 20,
+      padding: 35,
+      alignItems: "center",
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5
+    },
+    button: {
+      width: '300px',
+      borderRadius: 20,
+      padding: 10,
+      elevation: 2,
+    },
+    buttonOpen: {
+      backgroundColor: "#ffeaa7",
+    },
+    buttonClose: {
+      backgroundColor: "#ffeaa7",
+    },
+    textStyle: {
+      color: '#6c5ce7',
+      fontWeight: "bold",
+      textAlign: "center"
+    },
+    modalText: {
+      color: '#6c5ce7',
+      marginBottom: 15,
+      textAlign: "center"
+    }
 })
 
 export default styles
