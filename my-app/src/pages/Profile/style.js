@@ -56,14 +56,14 @@ const styles = StyleSheet.create({
     profileName: {
       fontFamily: 'roboto, sans-serif',
       color: '#6c5ce7',
-      fontSize: '2em',
+      fontSize: '1.5em',
       fontWeight: 'bold',
     },
 
     title: {
       alignContent: 'flex-start',
       fontFamily: 'roboto, sans-serif',
-      fontSize: '25px',
+      fontSize: '20px',
       color: '#6c5ce7', 
     },
 

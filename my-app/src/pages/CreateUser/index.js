@@ -3,19 +3,18 @@ import { Platform } from 'react-native';
 import { createUserWithEmailAndPassword } from '@firebase/auth'
 import { firebaseAuth, db } from '../../Helpers/firebaseConfig'
 import { useState } from 'react';
+import Checkbox from 'expo-checkbox';
 import {
     Text, 
     View,
     TextInput,
     TouchableOpacity,
     KeyboardAvoidingView,
-    CheckBox,
     Modal,
     Pressable,
 } from 'react-native';
 import styles from './styles'
 import { collection, doc, setDoc } from "firebase/firestore";
-// import  ModalList  from '../../Components/ModalList/index'
 
 export default function CreateUser({ navigation }) {
   const [email, setEmail] = useState("");
@@ -120,7 +119,7 @@ export default function CreateUser({ navigation }) {
             value={password}
         />
         <View style={styles.checkboxContainer}>
-        <CheckBox
+        <Checkbox
           value={isChecked}
           onValueChange={setCheck}
           style={styles.checkbox}

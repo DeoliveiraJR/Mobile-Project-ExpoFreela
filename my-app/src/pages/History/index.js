@@ -2,8 +2,9 @@ import { View, Text } from 'react-native'
 import NavBarIcons from '../../Components/NavBar/index';
 import styles from './style';
 import { firebaseAuth, db } from '../../Helpers/firebaseConfig';
-import { collection, query, where, doc, setDoc, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { useState, useEffect } from 'react';
+import { WebView } from 'react-native-webview';
 
 function onPressHome(){
   navigation.navigate('home')
@@ -42,27 +43,21 @@ export default function History() {
   }, [])
 
   return (
-   <View style={styles.mainContainer}>
-     <View style={styles.paragraphContainer}>
-       <Text style={styles.titleParagraph}>
+    <View style={styles.mainContainer}>
+      <View style={styles.paragraphContainer}>
+        <Text style={styles.titleParagraph}>
          Aqui está o seu avanço com o passar das semanas,
          {'\n'}
          esses dados serão enviados ao seu médico. Qualquer
          {'\n'}
          variação estranha deverá ser contatada.
-       </Text>
-     </View>
-     <View style={styles.chartFirstContainer}>
-        <View style={styles.containerChart}>
-          <Text style={styles.titleChart}>Grafico Semanal</Text>
-        </View>
-     </View>
-     <View style={styles.chartSecondContainer}>
-        <View style={styles.containerChart}>
-          <Text style={styles.titleChart}>Histórico de dados:</Text>
-        </View>
-     </View>
+        </Text>
+      </View>
+      <WebView
+        style={styles.container}
+        originWhitelist={['*']}
+      source={{ html: '<iframe width="100%" height="931" frameborder="0" src="https://stem.ubidots.com/app/dashboards/public/widget/9zX56WnDLucNsN0kdkKexWGQI6-gLWSmjSNed010_gw?embed=true"></iframe>' }}
+    />
    </View>
   );
 }
-

@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     },
 
     titleBtn: {
-      fontSize: '45px',
+      fontSize: '35px',
       color: '#6c5ce7',
       fontWeight:'700',
     },
@@ -43,6 +43,56 @@ const styles = StyleSheet.create({
       borderRadius: 500,
       marginBottom: '100px'
     },
+
+    centeredView: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 22
+    },
+
+    modalView: {
+      margin: 20,
+      backgroundColor: "white",
+      borderRadius: 20,
+      padding: 35,
+      alignItems: "center",
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+    },
+    buttonModal: {
+      margin: '5px',
+      padding: 10,
+      borderRadius: 10,
+      width: '200px',
+      height: 'auto',
+      backgroundColor: "#dfe6e9",
+    },
+    textStyle: {
+      color: '#6c5ce7',
+      fontWeight: "bold",
+      textAlign: "center"
+    },
+    modalText: {
+      color: '#6c5ce7',
+      marginBottom: 15,
+      textAlign: "center"
+    },
+
+    textStyleLabel: {
+      color: '#ff7675',
+      fontWeight: "bold",
+      textAlign: "center",
+      fontSize: "20px",
+    },
+    
+    
 })
 
 export default styles

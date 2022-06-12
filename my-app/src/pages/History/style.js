@@ -68,6 +68,11 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'space-around',
     },
+
+    containerWebView: {
+      flex: 1,
+      marginTop: 'Constants.statusBarHeight',
+    },
 })
 
 export default styles

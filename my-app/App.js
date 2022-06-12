@@ -7,6 +7,7 @@ import CreateUser from './src/pages/CreateUser/index';
 import CollectData from './src/pages/CollectData/Index';
 import History from './src/pages/History/index';
 import Profile from './src/pages/Profile';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -18,21 +19,45 @@ function Tabs() {
         name="history"
         component={History}
         options={{
+          tabBarLabel: "history",
           headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Icon
+            name="data-usage"
+            color={ color }
+            size={26}
+          />
+          )
         }}  
       />
       <Tab.Screen
         name="collectData"
         component={CollectData}
         options={{
+          tabBarLabel: "home",
           headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Icon
+              name="roofing"
+              color={ color }
+              size={26}
+            />
+          )
         }}
       />
       <Tab.Screen
         name="profile"
         component={Profile}
         options={{
+          tabBarLabel: "profile",
           headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Icon
+              name="person-pin"
+              color={ color }
+              size={26}
+            />
+          )
         }}  
       />  
     </Tab.Navigator>
