@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
       elevation: 5
     },
     button: {
-      width: '300px',
+      width: 300,
       borderRadius: 20,
       padding: 10,
       elevation: 2,

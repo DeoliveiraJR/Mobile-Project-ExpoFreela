@@ -16,32 +16,32 @@ const styles = StyleSheet.create({
       flexWrap: 'wrap',
       justifyContent: 'center',
       width: '99%',
-      borderRadius: '10px',
+      borderRadius: 10,
       backgroundColor: '#dfe6e9',
-      marginTop: '5px',
+      marginTop: 5,
     },
 
     title: {
       color: '#6c5ce7',
-      fontSize: '23px'
+      fontSize: 23,
     },
 
     titleBtn: {
-      fontSize: '35px',
+      fontSize: 35,
       color: '#6c5ce7',
-      fontWeight:'700',
+      fontWeight: 700,
     },
 
     buttonCollect: {
-      border: '5px solid #ffff',
-      boxshadow: '10px 10px 5px #aaaaaa',
+      border: '5 solid #ffff',
+      boxshadow: '10 10 5 #aaaaaa',
       alignItems: 'center',
       justifyContent: 'center',
       width: 300,
       height: 300,
       backgroundColor: '#00cec9',
       borderRadius: 500,
-      marginBottom: '100px'
+      marginBottom: 100,
     },
 
     centeredView: {
@@ -67,10 +67,10 @@ const styles = StyleSheet.create({
       elevation: 5,
     },
     buttonModal: {
-      margin: '5px',
+      margin: 5,
       padding: 10,
       borderRadius: 10,
-      width: '200px',
+      width: 200,
       height: 'auto',
       backgroundColor: "#dfe6e9",
     },
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
       color: '#ff7675',
       fontWeight: "bold",
       textAlign: "center",
-      fontSize: "20px",
+      fontSize: 20,
     },
     
     

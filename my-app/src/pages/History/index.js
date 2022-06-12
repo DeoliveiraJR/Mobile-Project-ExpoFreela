@@ -56,7 +56,7 @@ export default function History() {
       <WebView
         style={styles.container}
         originWhitelist={['*']}
-      source={{ html: '<iframe width="100%" height="931" frameborder="0" src="https://stem.ubidots.com/app/dashboards/public/widget/9zX56WnDLucNsN0kdkKexWGQI6-gLWSmjSNed010_gw?embed=true"></iframe>' }}
+      source={{ html: `<iframe width="100%" height="931" frameborder="0" src=${link1}></iframe>` }}
     />
    </View>
   );

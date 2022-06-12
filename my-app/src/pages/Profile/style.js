@@ -3,16 +3,16 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     body: {
       backgroundColor: '#0984e3',
-      margin: '250px 200px',
+      margin: '250 200',
       padding: 0,
       fontFamily: 'roboto, sans-serif',
-      fontSize: '16px',
+      fontSize: 16,
     },
     
     mainContainer: {
       height: '100%',
       backgroundColor: '#0984e3',
-      borderRadius: '6px',
+      borderRadius: 6,
       boxShadow: '1px 5px 1px rgba(0, 0, 0, 0.3',
       display: 'flex',
       flexDirection: 'colum',
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     
     topContainer: {
       width: '100%',
-      height: '120px',
-      borderRadius: '6px',
+      height: 120,
+      borderRadius: 6,
       backgroundColor: '#00cec9',
       display: 'flex',
       alignItems: 'center',
@@ -33,11 +33,11 @@ const styles = StyleSheet.create({
     
     profileImage: {
       backgroundColor: '#ffff',
-      height: '240px',
-      padding: '5px',
+      height: 240,
+      padding: 5,
       borderRadius: '50%',
       borderBottomColor: '#6c5ce7',
-      marginTop: '125px',
+      marginTop: 125,
     },
 
     bottomContainer: {
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     title: {
       alignContent: 'flex-start',
       fontFamily: 'roboto, sans-serif',
-      fontSize: '20px',
+      fontSize: 20,
       color: '#6c5ce7', 
     },
 
     linkEdit: {
       fontFamily: 'roboto, sans-serif',
-      fontSize: '12px', 
+      fontSize: 12, 
     },
 })
 
