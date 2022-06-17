@@ -4,8 +4,6 @@ const styles = StyleSheet.create({
     body: {
       backgroundColor: '#0984e3',
       margin: '250 200',
-      padding: 0,
-      fontFamily: 'roboto, sans-serif',
       fontSize: 16,
     },
     
@@ -15,60 +13,62 @@ const styles = StyleSheet.create({
       borderRadius: 6,
       boxShadow: '1px 5px 1px rgba(0, 0, 0, 0.3',
       display: 'flex',
-      flexDirection: 'colum',
+      flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'space-around',
     },
     
     topContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       width: '100%',
-      height: 120,
-      borderRadius: 6,
+      height: 100,
       backgroundColor: '#00cec9',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      opacity: '0.5',
+      opacity: 0.7,
     },
     
     profileImage: {
-      backgroundColor: '#ffff',
-      height: 240,
-      padding: 5,
-      borderRadius: '50%',
-      borderBottomColor: '#6c5ce7',
-      marginTop: 125,
+      width: 150,
+      height: 150,
+      marginTop: 80,
+      backgroundColor: '#0984e3',
+      borderRadius: 500,
     },
 
     bottomContainer: {
-      borderRadius: '8px',
+      borderRadius: 8,
       display: 'flex',
-      flexDirection: 'colum',
+      flexDirection: 'column',
       justifyContent: 'space-around',
-      flexWrap: 'warp',
       alignItems: 'center',
-      width: '60%',
+      width: '95%',
       height: '50%',
       backgroundColor: '#dfe6e9',
-      textAlign: 'center',
     },
-
+    
     profileName: {
-      fontFamily: 'roboto, sans-serif',
-      color: '#6c5ce7',
-      fontSize: '1.5em',
+      color: '#e17055',
       fontWeight: 'bold',
+      fontSize: 25,
     },
-
+    
+    label: {
+      fontWeight: 'bold',
+      fontSize: 16,
+      color: '#6c5ce7',
+    },
+    
     title: {
-      alignContent: 'flex-start',
-      fontFamily: 'roboto, sans-serif',
-      fontSize: 20,
+      fontWeight: 'normal',
+      fontSize: 16,
       color: '#6c5ce7', 
     },
 
     linkEdit: {
-      fontFamily: 'roboto, sans-serif',
       fontSize: 12, 
     },
 })

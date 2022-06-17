@@ -26,8 +26,6 @@ const styles = StyleSheet.create({
     },
 
     titleParagraph: {
-      fontFamily: 'roboto, sans-serif',
-      fontSize: '1em',
       color: '#6c5ce7',
     },
 
@@ -40,13 +38,12 @@ const styles = StyleSheet.create({
       justifyContent: 'space-around',
     },
 
-    titleChart: {
-      fontFamily: 'roboto, sans-serif',
-      color: 'white',
-      fontSize: '2em',
+    title: {
+      fontSize: 30,
       fontWeight: 'bold',
-      marginTop: 10,
-      color: '#55efc4',
+      marginTop: 20,
+      color: '#6c5ce7',
+      textAlign: 'center',
     },
 
     containerChart: {

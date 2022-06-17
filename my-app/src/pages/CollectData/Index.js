@@ -60,10 +60,10 @@ export default function CollectData({ route }) {
     <View style={styles.container}>
       <View style={styles.containerText}>
         <Text style={styles.title}>
-          Bem-vindo {name}
+          Bem-vindo <Text style={styles.titleName}>{name}</Text>
         </Text>
         <Text style={styles.title}>
-          Pressione o botão para coleta de dados!!!
+          Pressione o botão para coleta de dados
         </Text>
       </View>
       <View style={styles.centeredView}>

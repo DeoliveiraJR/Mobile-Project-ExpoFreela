@@ -34,23 +34,24 @@ export default function Profile() {
 }, [])
   
   return (
+  //É nesse view  mainContainer que está com problema de css
   <View style={styles.mainContainer}>
-      <View style={styles.topContainer}>
-        <FontAwesome style={styles.profileImage} name="user-circle" size={180} color="black" />
-      </View>
-      <View style={styles.bottomContainer}>
-          <Text style={styles.profileName}>{name}</Text>
-          <Text style={styles.title}><b>Email:</b> {email}</Text>
-          <Text style={styles.title}><b>Idade:</b>{age} anos</Text>
-          {
-          (describe === "" || describe === undefined) ?
-            <Text style={styles.title}><b>Tratamento:</b> não está em tratamento</Text>
-          :
-            <Text style={styles.title}><b>Tratamento:</b>{describe}</Text>
-          }
-          <Text style={styles.title}><b>Dia da semana:</b>{dayWeek}</Text>
-          <Text style={styles.linkEdit}>Editar Perfil</Text>
-      </View>
+    <View style={styles.topContainer}>
+        <FontAwesome style={styles.profileImage} name="user-circle" size={150} color="black" />
+    </View>
+    <View style={styles.bottomContainer}>
+      <Text style={styles.profileName}>{name}</Text>
+      <Text style={styles.label}>Email: <Text style={styles.title}>{email}</Text></Text>
+      <Text style={styles.label}>Idade: <Text style={styles.title}>{age} anos</Text></Text>
+        {
+        (describe === "" || describe === undefined) ?
+          <Text style={styles.label}>Tratamento: <Text style={styles.title}>não está em tratamento</Text></Text>
+        :
+          <Text style={styles.label}>Tratamento: <Text style={styles.title}>{describe}</Text></Text>
+        }
+      <Text style={styles.label}>Dia da semana: <Text style={styles.title}>{dayWeek}</Text></Text>
+      <Text style={styles.linkEdit}>Editar Perfil</Text>
+    </View>
   </View>
   );
 }

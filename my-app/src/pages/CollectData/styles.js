@@ -10,38 +10,46 @@ const styles = StyleSheet.create({
     },
 
     containerText: {
-      height: '30%',
+      height: '28%',
       display: 'flex',
       alignItems: 'center',
-      flexWrap: 'wrap',
       justifyContent: 'center',
       width: '99%',
       borderRadius: 10,
       backgroundColor: '#dfe6e9',
-      marginTop: 5,
+      opacity: 0.8,
     },
 
     title: {
+      color: '#e17055',
+      fontSize: 17,
+      textAlign: 'center',
+    },
+    
+    titleName: {
       color: '#6c5ce7',
-      fontSize: 23,
+      fontSize: 18,
+      fontWeight: 'bold',
     },
 
     titleBtn: {
-      fontSize: 35,
+      fontSize: 40,
+      fontWeight: 'bold',
       color: '#6c5ce7',
-      fontWeight: 700,
+      
     },
 
     buttonCollect: {
-      border: '5 solid #ffff',
-      boxshadow: '10 10 5 #aaaaaa',
       alignItems: 'center',
+      borderWidth: 3,
+      borderStyle: 'solid',
+      borderColor: '#ffff',
       justifyContent: 'center',
-      width: 300,
-      height: 300,
+      width: 320,
+      height: 320,
       backgroundColor: '#00cec9',
       borderRadius: 500,
-      marginBottom: 100,
+      marginBottom: 80,
     },
 
     centeredView: {

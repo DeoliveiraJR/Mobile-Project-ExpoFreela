@@ -6,6 +6,10 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { useState, useEffect } from 'react';
 import { WebView } from 'react-native-webview';
 
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
+
 function onPressHome(){
   navigation.navigate('home')
 }
@@ -37,27 +41,26 @@ export default function History() {
 
   useEffect(() => {
     const user = firebaseAuth.currentUser.email;
-    const docRef = collection(db, "Users");
+    const docRef = collection(db, "Users");//nome da coleção do firebase: Users
     const q = query(docRef, where("email", "==", user));
     const data = getDocsFirebase(q);
   }, [])
 
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.paragraphContainer}>
-        <Text style={styles.titleParagraph}>
-         Aqui está o seu avanço com o passar das semanas,
-         {'\n'}
-         esses dados serão enviados ao seu médico. Qualquer
-         {'\n'}
-         variação estranha deverá ser contatada.
-        </Text>
-      </View>
+    <>
+    <Text style={styles.title}>Grafico 1</Text>
       <WebView
         style={styles.container}
         originWhitelist={['*']}
-      source={{ html: `<iframe width="100%" height="931" frameborder="0" src=${link1}></iframe>` }}
-    />
-   </View>
+        source={{ html: `<iframe width="100%" height="931" frameborder="0" src=https://stem.ubidots.com/app/dashboards/public/widget/9zX56WnDLucNsN0kdkKexWGQI6-gLWSmjSNed010_gw?embed=true></iframe>` }}
+      />
+    <Text style={styles.title}>Grafico 2</Text>
+      <WebView
+        style={styles.container}
+        originWhitelist={['*']}
+        source={{ html: `<iframe width="100%" height="931" frameborder="0" src=https://stem.ubidots.com/app/dashboards/public/widget/9zX56WnDLucNsN0kdkKexWGQI6-gLWSmjSNed010_gw?embed=true></iframe>` }}
+      />
+    </>
   );
 }
+

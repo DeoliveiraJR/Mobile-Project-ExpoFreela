@@ -12,6 +12,7 @@ import {
     KeyboardAvoidingView,
     Modal,
     Pressable,
+    ScrollView,
 } from 'react-native';
 import styles from './styles'
 import { collection, doc, setDoc } from "firebase/firestore";
@@ -34,7 +35,7 @@ export default function CreateUser({ navigation }) {
   }
    
   const addFirestore = async () => {
-    const data = {
+    const data = { 
       email,
       password,
       name,
@@ -72,6 +73,7 @@ export default function CreateUser({ navigation }) {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
+      <ScrollView>
       <Text
         style={styles.title}
       >
@@ -119,59 +121,59 @@ export default function CreateUser({ navigation }) {
             value={password}
         />
         <View style={styles.checkboxContainer}>
-        <Checkbox
-          value={isChecked}
-          onValueChange={setCheck}
-          style={styles.checkbox}
-        />
-        <Text style={styles.label}>Esta realizando algum tratamento?</Text>
-        </View>
-        <View>
-          {isChecked ?
-          <TextInput
-            style={styles.input}
-            placeholder="describe here"
-            type="text"
-            onChangeText={(describe => setDescribe(describe))}
-            value={describe}
+          <Checkbox
+            value={isChecked}
+            onValueChange={setCheck}
+            style={styles.checkbox}
           />
-          :
-          <></>
-          }
-        </View>
-        <View>
-        <View style={styles.centeredView}>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
-                    setModalVisible(!modalVisible);
-                }}
+          <Text style={styles.label}>Esta realizando algum tratamento?</Text>
+          </View>
+          <View>
+            {isChecked ?
+            <TextInput
+              style={styles.input}
+              placeholder="describe here"
+              type="text"
+              onChangeText={(describe => setDescribe(describe))}
+              value={describe}
+            />
+            :
+            <></>
+            }
+          </View>
+          <View>
+            <View style={styles.centeredView}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                    >
+                    <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                            { days.map((day) => (
+                            <Pressable
+                                key={day}
+                                style={[styles.button, styles.buttonDayModal]}
+                                onPress={() => handleDayOfWeek(day)}
+                            >
+                        <Text style={styles.textStyle}>{day}</Text>
+                        </Pressable>
+                        ))}
+                        
+                    </View>
+                    </View>
+                </Modal>
+                <Pressable
+                    style={[styles.button, styles.buttonOpen]}
+                    onPress={() => setModalVisible(!modalVisible)}
                 >
-                <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                        { days.map((day) => (
-                        <Pressable
-                            key={day}
-                            style={[styles.button, styles.buttonDayModal]}
-                            onPress={() => handleDayOfWeek(day)}
-                        >
-                    <Text style={styles.textStyle}>{day}</Text>
-                    </Pressable>
-                    ))}
-                    
-                </View>
-                </View>
-            </Modal>
-            <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => setModalVisible(!modalVisible)}
-            >
-                <Text style={styles.textStyle}>Selecione o dia: {dayWeek} </Text>
-            </Pressable>
-      </View>
+                    <Text style={styles.textStyle}>Selecione o dia: {dayWeek} </Text>
+                </Pressable>
+          </View>
       </View>
         { (email === "" || password === "" || age === '' || name === '')
         ?
@@ -198,8 +200,8 @@ export default function CreateUser({ navigation }) {
                 login
             </Text>
         </Text>
-        
-        <View style={{height: 100}}/>
+        <View />
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }
