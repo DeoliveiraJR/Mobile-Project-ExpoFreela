@@ -1,6 +1,6 @@
 import React from 'react';
 import { signInWithEmailAndPassword } from '@firebase/auth'
-import { firebaseAuth } from '../../config/firebaseConfig'
+import { firebaseAuth } from '../../Helpers/firebaseConfig'
 import { useState, useEffect } from 'react';
 import {
     Text, 
@@ -21,14 +21,15 @@ export default function Login({ navigation }) {
     const loginFirebase = () => {
         signInWithEmailAndPassword(firebaseAuth, email, password)
         .then((userCredential) => {
-            var user = userCredential.user;
-            console.log(user);
-            navigation.navigate('createUser', { idUser: user.uid })
+            const user = userCredential.user;
+            const { uid } = user; 
+            // console.log(uid);
+            navigation.navigate('home', { uid })
         })
         .catch((error) => {
             setErrorLogin(true)
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            const errorCode = error.code;
+            const errorMessage = error.message;
             // ..
         });
     }
@@ -108,11 +109,3 @@ export default function Login({ navigation }) {
         </KeyboardAvoidingView>
   );
 }
-
-
-const getUsers = async (users) => {
-    // recupera a collection do firebase:
-    const data = await getDocs(usersCollectionRef)
-    console.log(data)
-}
-getUsers()

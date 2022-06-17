@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     warningAlert: {
       paddingLeft: 10,
       color: '#FFD700',
-      fontsize: 16,
+      fontSize: 16,
     },
     registration: {
       marginTop: 20,
