@@ -49,14 +49,14 @@ const styles = StyleSheet.create({
       height: 320,
       backgroundColor: '#00cec9',
       borderRadius: 500,
-      marginBottom: 80,
+      marginBottom: 150,
     },
 
     centeredView: {
-      flex: 1,
+      flex: 1,  
+      display: 'flex',
       justifyContent: "center",
       alignItems: "center",
-      marginTop: 22
     },
 
     modalView: {
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
       shadowRadius: 4,
       elevation: 5,
     },
+
     buttonModal: {
       margin: 5,
       padding: 10,
@@ -82,11 +83,13 @@ const styles = StyleSheet.create({
       height: 'auto',
       backgroundColor: "#dfe6e9",
     },
+
     textStyle: {
       color: '#6c5ce7',
       fontWeight: "bold",
       textAlign: "center"
     },
+
     modalText: {
       color: '#6c5ce7',
       marginBottom: 15,
@@ -99,8 +102,26 @@ const styles = StyleSheet.create({
       textAlign: "center",
       fontSize: 20,
     },
+
+    /* animationContainer: {
+      flex: 1,
+      backgroundColor: '#ffff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+      
+    lottieContainer: { 
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }, */
     
-    
+    loading: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '80%',
+      height: '80%',
+    },
 })
 
 export default styles

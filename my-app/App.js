@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,6 +8,8 @@ import CollectData from './src/pages/CollectData/Index';
 import History from './src/pages/History/index';
 import Profile from './src/pages/Profile';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+// import { firebaseAuth } from './src/Helpers/firebaseConfig';
+import { SplashScreen } from './src/Components/SplashScreen/index';
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -26,10 +28,10 @@ function Tabs() {
             name="data-usage"
             color={ color }
             size={26}
+            />
+            )
+          }}  
           />
-          )
-        }}  
-      />
       <Tab.Screen
         name="collectData"
         component={CollectData}
@@ -38,13 +40,13 @@ function Tabs() {
           headerShown: false,
           tabBarIcon: ({ color }) => (
             <Icon
-              name="roofing"
-              color={ color }
-              size={26}
+            name="roofing"
+            color={ color }
+            size={26}
             />
-          )
-        }}
-      />
+            )
+          }}
+          />
       <Tab.Screen
         name="profile"
         component={Profile}
@@ -53,22 +55,46 @@ function Tabs() {
           headerShown: false,
           tabBarIcon: ({ color }) => (
             <Icon
-              name="person-pin"
-              color={ color }
-              size={26}
+            name="person-pin"
+            color={ color }
+            size={26}
             />
-          )
-        }}  
-      />  
+            )
+          }}  
+          />  
     </Tab.Navigator>
   )
 }
 
 export default function App() {
+  const [appIsReady, setAppsReady] = useState(false);
+
+  /* 
+  useEffect(() => {
+    const user = firebaseAuth.currentUser.email;
+    console.log(user);
+    if(user === null || user === undefined) {
+      setAppsReady(true);
+    } else {
+      setAppsReady(true);
+      navigation.navigate('home')
+    } 
+  
+  }, [])
+  */
 
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName="login">
+    <Stack.Navigator initialRouteName="home">
+      <Stack.Screen
+        name="SplashScreen"
+        component={SplashScreen}
+        options={{
+          headerShown: false,
+          tabShown: false,
+        }}
+        />
+      
       <Stack.Screen
         name="login"
         component={Login}
@@ -76,7 +102,7 @@ export default function App() {
           headerShown: false,
           tabShown: false,
         }}
-      />
+        />
     
       <Stack.Screen
         name="createUser"

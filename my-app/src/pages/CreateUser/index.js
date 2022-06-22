@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Platform } from 'react-native';
 import { createUserWithEmailAndPassword } from '@firebase/auth'
 import { firebaseAuth, db } from '../../Helpers/firebaseConfig'
@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 import styles from './styles'
 import { collection, doc, setDoc } from "firebase/firestore";
+import LottieView from 'lottie-react-native';
 
 export default function CreateUser({ navigation }) {
   const [email, setEmail] = useState("");
@@ -26,6 +27,8 @@ export default function CreateUser({ navigation }) {
   const [dayWeek, setDayWeek] = useState("");
   const [isChecked, setCheck] = useState(false)
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const animation = useRef(null);
   const days = ["Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira"]
 
   
@@ -58,67 +61,81 @@ export default function CreateUser({ navigation }) {
       navigation.navigate('home')
     })
     .catch((error) => {
-      // setErrorLogin(true)
       const errorCode = error.code;
       const errorMessage = error.message;
     });
   }
-
+  
+  /* 
   function handleCheck() {
     setCheck(!check);
   }
-
+  */  
+  
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    <View
+    style={styles.container}
     >
-      <ScrollView>
-      <Text
-        style={styles.title}
+    { loading ?
+      <LottieView
+        autoPlay
+        ref={animation}
+        style={styles.loading}
+        source={require('../../assets/loading.json')}
+        resizeMode='contain'
+        loop={false}            
+        onAnimationFinish={() => setLoading(!loading)}
+      />
+      :
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        Cadastro
-      </Text>
+      <ScrollView>
+        <Text
+          style={styles.title}
+        >
+          Cadastro
+        </Text>
         <Text style={styles.labels}>
             Digite seu nome completo :
         </Text>
         <TextInput
-            style={styles.input}
-            placeholder="enter your name"
-            type="text"
-            onChangeText={(text) => setName(text)}
-            value={name}
+          style={styles.input}
+          placeholder="enter your name"
+          type="text"
+          onChangeText={(text) => setName(text)}
+          value={name}
         />
         <Text style={styles.labels}>
-            Digite sua idade :
+          Digite sua idade :
         </Text>
         <TextInput
-            style={styles.input}
-            placeholder="type your age"
-            type="text"
-            onChangeText={(text) => setAge(text)}
-            value={age}
+          style={styles.input}
+          placeholder="type your age"
+          type="text"
+          onChangeText={(text) => setAge(text)}
+          value={age}
         />
         <Text style={styles.labels}>
-            Insira um email válido :
+          Insira um email válido :
         </Text>
         <TextInput
-            style={styles.input}
-            placeholder="register a email"
-            type="text"
-            onChangeText={(text) => setEmail(text)}
-            value={email}
+          style={styles.input}
+          placeholder="register a email"
+          type="text"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
         />
         <Text style={styles.labels}>
-            Insira uma senha :
+          Insira uma senha :
         </Text>
         <TextInput
-            style={styles.input}
-            placeholder="create a password"
-            secureTextEntry={true}
-            type="text"
-            onChangeText={(password) => setPassword(password)}
-            value={password}
+          style={styles.input}
+          placeholder="create a password"
+          secureTextEntry={true}
+          type="text"
+          onChangeText={(password) => setPassword(password)}
+          value={password}
         />
         <View style={styles.checkboxContainer}>
           <Checkbox
@@ -126,10 +143,10 @@ export default function CreateUser({ navigation }) {
             onValueChange={setCheck}
             style={styles.checkbox}
           />
-          <Text style={styles.label}>Esta realizando algum tratamento?</Text>
-          </View>
-          <View>
-            {isChecked ?
+            <Text style={styles.label}>Esta realizando algum tratamento?</Text>
+        </View>
+        <View>
+          {isChecked ?
             <TextInput
               style={styles.input}
               placeholder="describe here"
@@ -139,69 +156,76 @@ export default function CreateUser({ navigation }) {
             />
             :
             <></>
-            }
+          }
           </View>
           <View>
             <View style={styles.centeredView}>
                 <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been closed.");
-                        setModalVisible(!modalVisible);
-                    }}
-                    >
-                    <View style={styles.centeredView}>
+                  animationType="slide"
+                  transparent={true}
+                  visible={modalVisible}
+                  onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                  <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                            { days.map((day) => (
-                            <Pressable
-                                key={day}
-                                style={[styles.button, styles.buttonDayModal]}
-                                onPress={() => handleDayOfWeek(day)}
-                            >
-                        <Text style={styles.textStyle}>{day}</Text>
-                        </Pressable>
-                        ))}
-                        
+                      { days.map((day) => (
+                        <TouchableOpacity
+                          key={day}
+                          style={[styles.button, styles.buttonDayModal]}
+                          onPress={() => handleDayOfWeek(day)}
+                        >
+                          <Text style={styles.textStyle}>{day}</Text>
+                        </TouchableOpacity>
+                      ))}
                     </View>
-                    </View>
+                  </View>
                 </Modal>
                 <Pressable
                     style={[styles.button, styles.buttonOpen]}
                     onPress={() => setModalVisible(!modalVisible)}
                 >
-                    <Text style={styles.textStyle}>Selecione o dia: {dayWeek} </Text>
+                  <Text style={styles.textStyle}>Selecione o dia :
+                    <Text style={styles.textSelected}>
+                      {dayWeek}
+                    </Text>
+                  </Text>
                 </Pressable>
+            </View>
+        </View>
+        <View style={styles.containerBtnRegister}>
+          { (email === "" || password === "" || age === '' || name === '')
+          ?
+          <TouchableOpacity
+            style={styles.buttonLoginDisabled}
+            disabled={true}
+          >
+              <Text style={styles.textButtonLogin}>Cadastrar</Text>
+          </TouchableOpacity>
+          :
+          <TouchableOpacity
+            style={styles.buttonLogin}
+            onPress={registerFirebase}
+          >
+              <Text style={styles.textButtonLogin}>Cadastrar</Text>
+          </TouchableOpacity>
+          }
           </View>
-      </View>
-        { (email === "" || password === "" || age === '' || name === '')
-        ?
-        <TouchableOpacity
-          style={styles.buttonLoginDisabled}
-          disabled={true}
-        >
-            <Text style={styles.textButtonLogin}>Cadastrar</Text>
-        </TouchableOpacity>
-        :
-        <TouchableOpacity
-          style={styles.buttonLogin}
-          onPress={registerFirebase}
-        >
-            <Text style={styles.textButtonLogin}>Cadastrar</Text>
-        </TouchableOpacity>
-        }
-        <Text style={styles.registration}>
-            Já é cadastrado?
-            <Text
-              style={styles.linkSubscribe}
-              onPress={() => navigation.navigate('login')}
-            >
-                login
-            </Text>
-        </Text>
+          <Text style={styles.registration}>
+              Já é cadastrado?
+              <Text
+                style={styles.linkSubscribe}
+                onPress={() => navigation.navigate('login')}
+              >
+                  login
+              </Text>
+          </Text>
         <View />
       </ScrollView>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    }
+    </View>
   );
 }
