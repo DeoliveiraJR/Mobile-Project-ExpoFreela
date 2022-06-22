@@ -3,15 +3,14 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     body: {
       backgroundColor: '#0984e3',
-      margin: '250 200',
       fontSize: 16,
     },
     
     mainContainer: {
+      flex: 1,
       height: '100%',
       backgroundColor: '#0984e3',
       borderRadius: 6,
-      boxShadow: '1px 5px 1px rgba(0, 0, 0, 0.3',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -22,12 +21,9 @@ const styles = StyleSheet.create({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      width: '100%',
+      width: 500,
       height: 100,
       backgroundColor: '#00cec9',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
       opacity: 0.7,
     },
     
@@ -45,8 +41,8 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       justifyContent: 'space-around',
       alignItems: 'center',
-      width: '95%',
-      height: '50%',
+      width: 350,
+      height: '60%',
       backgroundColor: '#dfe6e9',
     },
     

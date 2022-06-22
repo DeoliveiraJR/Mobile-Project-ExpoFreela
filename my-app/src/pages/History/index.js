@@ -1,5 +1,4 @@
 import { View, Text } from 'react-native'
-import NavBarIcons from '../../Components/NavBar/index';
 import styles from './style';
 import { firebaseAuth, db } from '../../Helpers/firebaseConfig';
 import { collection, query, where, getDocs } from "firebase/firestore";
