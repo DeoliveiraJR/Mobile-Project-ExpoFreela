@@ -85,57 +85,52 @@ export default function App() {
 
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName="home">
-      <Stack.Screen
-        name="SplashScreen"
-        component={SplashScreen}
-        options={{
-          headerShown: false,
-          tabShown: false,
-        }}
+      <Stack.Navigator initialRouteName="SplashScreen">
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{
+            headerShown: false,
+            tabShown: false,
+          }}
+          />
+        <Stack.Screen
+          name="login"
+          component={Login}
+          options={{
+            headerShown: false,
+            tabShown: false,
+          }}
+          />
+        <Stack.Screen
+          name="createUser"
+          component={CreateUser}
+          options={{
+            headerShown: false,
+          }}
         />
-      
-      <Stack.Screen
-        name="login"
-        component={Login}
-        options={{
-          headerShown: false,
-          tabShown: false,
-        }}
+        <Stack.Screen
+          name="home"
+          component={Tabs}
+          options={{
+            headerShown: false,
+          }}
         />
-    
-      <Stack.Screen
-        name="createUser"
-        component={CreateUser}
-        options={{
-          headerShown: false,
-        }}
-      />
-
-      <Stack.Screen
-        name="home"
-        component={Tabs}
-        options={{
-          headerShown: false,
-        }}
-      />
-
-      <Stack.Screen
-        name="history"
-        component={History}
-        options={{
-          headerShown: false,
-        }}
-      />
-
-      <Stack.Screen
-        name="profile"
-        component={Profile}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack.Navigator>
-  </NavigationContainer>
+        <Stack.Screen
+          name="history"
+          component={History}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="profile"
+          component={Profile}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

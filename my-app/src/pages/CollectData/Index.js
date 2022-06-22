@@ -36,10 +36,10 @@ export default function CollectData({ route }) {
   }
 
   useEffect(() => {
-    /* const user = firebaseAuth.currentUser.email;
+    const user = firebaseAuth.currentUser.email;
     const docRef = collection(db, "Users");
     const q = query(docRef, where("email", "==", user));
-    const data = getDocsFirebase(q); */
+    const data = getDocsFirebase(q);
   }, [])
   
   const handleReceiveUbidots = () => {

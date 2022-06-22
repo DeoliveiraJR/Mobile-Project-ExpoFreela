@@ -115,6 +115,7 @@ export default function CreateUser({ navigation }) {
           type="text"
           onChangeText={(text) => setAge(text)}
           value={age}
+          keyboardType="numeric"
         />
         <Text style={styles.labels}>
           Insira um email válido :
@@ -125,6 +126,7 @@ export default function CreateUser({ navigation }) {
           type="text"
           onChangeText={(text) => setEmail(text)}
           value={email}
+          keyboardType="email-address"
         />
         <Text style={styles.labels}>
           Insira uma senha :
